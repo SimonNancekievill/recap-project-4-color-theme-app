@@ -2,14 +2,15 @@ import "./Color.css";
 
 export default function Color({ id, hex, contrastText, role }) {
   return (
-    <article
+    <li
+      key={id}
       id={id}
       className="color-card"
       style={{ backgroundColor: hex, color: contrastText }}
     >
-      <h3 className="color-card-headline">{hex}</h3>
-      <h4>{role}</h4>
+      <h2 className="color-card-headline">{hex}</h2>
+      <h3>{role}</h3>
       <p>contrast: {contrastText}</p>
-    </article>
+    </li>
   );
 }
