@@ -6,7 +6,9 @@ import { useState } from "react";
 import { uid } from "uid";
 function App() {
   const [colors, setColors] = useState(initialColors);
-
+  function handleDeleteColor(colorToDelete) {
+    setColors(colors.filter((color) => color !== colorToDelete));
+  }
   function handleAddColor(newColor) {
     console.log(newColor);
     setColors([
@@ -19,23 +21,28 @@ function App() {
       },
       ...colors,
     ]);
-    console.log(colors);
   }
   return (
     <>
       <h1>Theme Creator</h1>
       <ColorForm onAddColor={handleAddColor} />
-      <ul>
-        {colors.map((color) => (
-          <Color
-            key={color.id}
-            id={color.id}
-            hex={color.hex}
-            role={color.role}
-            contrastText={color.contrastText}
-          />
-        ))}
-      </ul>
+      {colors.length > 0 ? (
+        <ul>
+          {colors.map((color) => (
+            <Color
+              key={color.id}
+              id={color.id}
+              hex={color.hex}
+              role={color.role}
+              contrastText={color.contrastText}
+              onDeleteColor={handleDeleteColor}
+              color={color}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p>No Colors… start by adding one!</p>
+      )}
     </>
   );
 }

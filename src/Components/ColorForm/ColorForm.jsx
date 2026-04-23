@@ -15,7 +15,6 @@ export default function ColorForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onAddColor(data);
-
     form.reset();
     setFormKey((key) => key + 1);
     form.elements.role.focus();
