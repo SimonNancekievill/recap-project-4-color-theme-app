@@ -9,7 +9,7 @@ export default function Color({
   onDeleteColor,
   color,
 }) {
-  const [check, setCheck] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
 
   return (
     <li
@@ -22,19 +22,19 @@ export default function Color({
       <h3>{role}</h3>
       <p>contrast: {contrastText}</p>
       <div>
-        {check ? (
+        {confirmation ? (
           <>
             <p className="color-card-highlight">Really Delete?</p>
-            <button type="button" onClick={() => setCheck(false)}>
-              CANCEL
+            <button type="button" onClick={() => setConfirmation(false)}>
+              Cancel
             </button>
             <button type="button" onClick={() => onDeleteColor(color)}>
-              DELETE
+              Delete
             </button>
           </>
         ) : (
-          <button type="button" onClick={() => setCheck(true)}>
-            DELETE
+          <button type="button" onClick={() => setConfirmation(true)}>
+            Delete
           </button>
         )}
       </div>
