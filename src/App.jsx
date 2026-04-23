@@ -9,14 +9,24 @@ function App() {
 
   function handleAddColor(newColor) {
     console.log(newColor);
-    setColors([{ id: uid(), hex: newColor.hex, ...newColor }, ...colors]);
+    setColors([
+      {
+        id: uid(),
+        role: newColor.role,
+        hex: newColor.hex,
+        contrastText: newColor.contrastText,
+        ...Color,
+      },
+      ...colors,
+    ]);
+    console.log(colors);
   }
   return (
     <>
       <h1>Theme Creator</h1>
       <ColorForm onAddColor={handleAddColor} />
       <ul>
-        {initialColors.map((color) => (
+        {colors.map((color) => (
           <Color
             key={color.id}
             id={color.id}
