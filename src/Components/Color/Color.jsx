@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Color.css";
+import ColorForm from "../ColorForm/ColorForm";
 
 export default function Color({
   id,
@@ -10,6 +11,7 @@ export default function Color({
   color,
 }) {
   const [confirmation, setConfirmation] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   return (
     <li
@@ -33,9 +35,24 @@ export default function Color({
             </button>
           </>
         ) : (
-          <button type="button" onClick={() => setConfirmation(true)}>
-            Delete
-          </button>
+          <>
+            <button type="button" onClick={() => setConfirmation(true)}>
+              Delete
+            </button>
+            {editing ? (
+              <>
+                <ColorForm role={role} hex={hex} contrastText={contrastText} />
+                <button type="button" onClick={() => setEditing(false)}>
+                  discard changes
+                </button>
+                <button type="button">apply changes</button>
+              </>
+            ) : (
+              <button type="button" onClick={() => setEditing(true)}>
+                Edit
+              </button>
+            )}
+          </>
         )}
       </div>
     </li>

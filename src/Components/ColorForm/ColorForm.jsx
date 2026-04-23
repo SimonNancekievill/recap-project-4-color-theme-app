@@ -5,6 +5,9 @@ import { useState } from "react";
 
 export default function ColorForm({
   onAddColor,
+  hex,
+  contrastText,
+  role,
   defaultValue = { role: "some role", hex: "#1d1d1f", contrastText: "#ffffff" },
 }) {
   const [fromKey, setFormKey] = useState(0);
