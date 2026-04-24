@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Color.css";
 import ColorForm from "../ColorForm/ColorForm";
+import CopyToClipboard from "../Clipboard/CopyToClipboard";
 
 export default function Color({
   id,
@@ -21,7 +22,10 @@ export default function Color({
       className="color-card"
       style={{ backgroundColor: hex, color: contrastText }}
     >
-      <h2 className="color-card-headline">{hex}</h2>
+      <span>
+        <h2 className="color-card-headline">{hex}</h2>
+        <CopyToClipboard hex={hex} />
+      </span>
       <h3>{role}</h3>
       <p>contrast: {contrastText}</p>
       <div>
