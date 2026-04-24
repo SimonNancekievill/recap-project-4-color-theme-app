@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function ColorForm({
   onAddColor,
   defaultValue = { role: "some role", hex: "#1d1d1f", contrastText: "#ffffff" },
+  submitButton = "Add Color",
 }) {
   const [fromKey, setFormKey] = useState(0);
 
@@ -23,27 +24,27 @@ export default function ColorForm({
   return (
     <>
       <form className="color-form" onSubmit={handleSubmit}>
-        <lable htmlFor="roleInput">Role:</lable>
+        <label htmlFor="roleInput">Role:</label>
         <input
           id="roleInput"
           type="text"
           name="role"
           defaultValue={defaultValue.role}
         ></input>
-        <lable htmlFor="hexInput">Hex:</lable>
+        <label htmlFor="hexInput">Hex:</label>
         <ColorInput
           key={`hex-${fromKey}`}
           id="hex"
           defaultValue={defaultValue.hex}
         />
-        <lable htmlFor="contrastInput">Contrast Color:</lable>
+        <label htmlFor="contrastInput">Contrast Color:</label>
         <ColorInput
           key={`contrastText-${fromKey}`}
           id="contrastText"
           defaultValue={defaultValue.contrastText}
         />
         <button className="submit-button" type="submit">
-          Add Color
+          {submitButton}
         </button>
       </form>
     </>

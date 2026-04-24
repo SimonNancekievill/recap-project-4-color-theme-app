@@ -10,7 +10,6 @@ function App() {
     setColors(colors.filter((color) => color !== colorToDelete));
   }
   function handleAddColor(newColor) {
-    console.log(newColor);
     setColors([
       {
         id: uid(),
@@ -21,6 +20,13 @@ function App() {
       },
       ...colors,
     ]);
+  }
+  function handleEditColor(id, updatedColor) {
+    setColors(
+      colors.map((color) =>
+        color.id === id ? { ...color, ...updatedColor } : color,
+      ),
+    );
   }
   return (
     <>
@@ -36,6 +42,7 @@ function App() {
               role={color.role}
               contrastText={color.contrastText}
               onDeleteColor={handleDeleteColor}
+              onEditColor={handleEditColor}
               color={color}
             />
           ))}

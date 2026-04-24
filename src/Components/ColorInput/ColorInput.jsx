@@ -11,16 +11,10 @@ export default function ColorInput({ id, defaultValue }) {
         id={id}
         type="text"
         value={inputValue}
-        defaultValue={defaultValue}
         name={id}
         onChange={handleInputValue}
       />
-      <input
-        type="color"
-        defaultValue={defaultValue}
-        value={inputValue}
-        onChange={handleInputValue}
-      />
+      <input type="color" value={inputValue} onChange={handleInputValue} />
     </>
   );
 }
