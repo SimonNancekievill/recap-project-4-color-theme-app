@@ -8,6 +8,7 @@ export default function Color({
   contrastText,
   role,
   onDeleteColor,
+  onEditColor,
   color,
 }) {
   const [confirmation, setConfirmation] = useState(false);
@@ -41,11 +42,17 @@ export default function Color({
             </button>
             {editing ? (
               <>
-                <ColorForm role={role} hex={hex} contrastText={contrastText} />
+                <ColorForm
+                  defaultValue={{ role, hex, contrastText }}
+                  onAddColor={(updatedColor) => {
+                    onEditColor(id, updatedColor);
+                    setEditing(false);
+                  }}
+                  submitButton="Apply Changes"
+                />
                 <button type="button" onClick={() => setEditing(false)}>
                   discard changes
                 </button>
-                <button type="button">apply changes</button>
               </>
             ) : (
               <button type="button" onClick={() => setEditing(true)}>
