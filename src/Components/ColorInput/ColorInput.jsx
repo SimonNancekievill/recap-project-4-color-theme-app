@@ -7,14 +7,16 @@ export default function ColorInput({ id, defaultValue }) {
   }
   return (
     <>
-      <input
-        id={id}
-        type="text"
-        value={inputValue}
-        name={id}
-        onChange={handleInputValue}
-      />
-      <input type="color" value={inputValue} onChange={handleInputValue} />
+      <span>
+        <input
+          id={id}
+          type="text"
+          value={inputValue}
+          name={id}
+          onChange={handleInputValue}
+        />
+        <input type="color" value={inputValue} onChange={handleInputValue} />
+      </span>
     </>
   );
 }
