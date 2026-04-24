@@ -1,6 +1,5 @@
 import "./color-form.css";
 import ColorInput from "../ColorInput/ColorInput";
-import Color from "../Color/Color";
 import { useState } from "react";
 
 export default function ColorForm({

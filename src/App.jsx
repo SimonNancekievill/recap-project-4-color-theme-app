@@ -2,7 +2,6 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import "./App.css";
 import ColorForm from "./Components/ColorForm/ColorForm";
-import { useState } from "react";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -10,6 +9,7 @@ function App() {
   const [colors, setColors] = useLocalStorageState("colors", {
     defaultValue: initialColors,
   });
+
   function handleDeleteColor(colorToDelete) {
     setColors(colors.filter((color) => color !== colorToDelete));
   }
