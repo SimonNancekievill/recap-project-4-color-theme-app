@@ -2,12 +2,19 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import "./App.css";
 import ColorForm from "./Components/ColorForm/ColorForm";
-import { useState } from "react";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
+
 function App() {
-  const [colors, setColors] = useState(initialColors);
+  const [colors, setColors] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  });
+
   function handleDeleteColor(colorToDelete) {
     setColors(colors.filter((color) => color !== colorToDelete));
+  }
+  function handleReset() {
+    setColors(initialColors);
   }
   function handleAddColor(newColor) {
     setColors([
@@ -46,6 +53,9 @@ function App() {
               color={color}
             />
           ))}
+          <button type="button" onClick={handleReset}>
+            Reset
+          </button>
         </ul>
       ) : (
         <p>No Colors… start by adding one!</p>
