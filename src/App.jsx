@@ -13,6 +13,9 @@ function App() {
   function handleDeleteColor(colorToDelete) {
     setColors(colors.filter((color) => color !== colorToDelete));
   }
+  function handleReset() {
+    setColors(initialColors);
+  }
   function handleAddColor(newColor) {
     setColors([
       {
@@ -50,6 +53,9 @@ function App() {
               color={color}
             />
           ))}
+          <button type="button" onClick={handleReset}>
+            Reset
+          </button>
         </ul>
       ) : (
         <p>No Colors… start by adding one!</p>
