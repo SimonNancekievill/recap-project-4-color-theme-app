@@ -12,9 +12,12 @@ export default function CopyToClipboard({ hex }) {
   }
   useEffect(() => {
     if (copyConfirmation) {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setCopyConfirmation(false);
       }, 3000);
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [copyConfirmation]);
 
